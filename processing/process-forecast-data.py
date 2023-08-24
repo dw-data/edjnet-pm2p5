@@ -565,10 +565,10 @@ def compute(nuts_level, timestep, year):
             
         if 'percentage_' in column:
             result[column] = result[column].fillna(0)
-            result[column] = result[column].round(3)
+            result[column] = result[column]
             
         if 'mean' in column:
-            result[column] = result[column].round(3)
+            result[column] = result[column]
     
           
     result = result.drop(columns=[col for col in result.columns if '_y' in col 
@@ -586,6 +586,9 @@ def main():
     # Compute the whole thing for 2023
     df_2023 = compute(nuts_level=3, year='2023', timestep='1D') # Daily data for 2023, level 3
     df_2023.to_csv(f"../output/csvs/forecast-classified-NUTS3-1D-2023.csv", index=False)
+
+    df_2023 = compute(nuts_level=3, year='2023', timestep='W') # Weekly data for 2023, level 3
+    df_2023.to_csv(f"../output/csvs/forecast-classified-NUTS3-W-2023.csv", index=False)
 
 
     # Level 3 yearly and daily data for 2022

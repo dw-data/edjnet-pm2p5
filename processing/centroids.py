@@ -56,7 +56,7 @@ def main():
 
     # Reads points
     points = pd.read_csv("../data/LAU_Centers/lau_2020_nuts_2021_pop_2018_p_2_adjusted_intersection.csv")
-    points = points.groupby("country").apply(lambda x: x.nlargest(50, 'population')) # n largest cities of each country
+    points = points.groupby("country").apply(lambda x: x.nlargest(15, 'population')) # n largest cities of each country
     points = points.reset_index(drop=True)
     
     # 2022-2023 forecast daily values

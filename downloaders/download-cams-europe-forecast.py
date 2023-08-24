@@ -10,6 +10,7 @@ from dateutil.relativedelta import relativedelta
 import glob
 from os import remove
 from os.path import isfile
+from secrets import CAMS_KEY
 import time as t
 import urllib3
 urllib3.disable_warnings()
@@ -19,12 +20,11 @@ def main():
     credentials = {
 
         "url": "https://ads.atmosphere.copernicus.eu/api/v2",
-        "key": "YOUR API KEY GOES HERE"
+        "key": CAMS_KEY
 
     }
 
     c = cdsapi.Client(url=credentials['url'], key=credentials['key'])
-
 
     for year in ['2023', '2022']:
 
@@ -39,17 +39,16 @@ def main():
 
 
         # Sets a file name
-        outpath = f'../data/CAMS-europe-forecast/raw/forecast/{start}_{limit}.netcdf'
+        outpath = f'../data/CAMS-europe-forecast/raw/forecast/{start}_{limit}.nc'
 
         # If there is already a file with this name (that is, the file was alraedy downloaded), skip it.
-        if isfile(outpath):
+        if isfile(outpath) and (year != "2023"):
             continue
 
         # If we are downloading a new file for 2023, we need to remove the previously existing 2023 file.
-        else:
-            if year == "2023":
-                files = glob.glob("../data/CAMS-europe-forecast/raw/forecast/2023*.nc")
-                assert len(files) == 1
+        if year == "2023":
+            files = glob.glob("../data/CAMS-europe-forecast/raw/forecast/2023*.nc")
+            if len(files) > 0:
                 remove(files[0])
 
         c.retrieve(

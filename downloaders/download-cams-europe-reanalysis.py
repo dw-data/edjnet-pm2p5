@@ -7,34 +7,36 @@ import cdsapi
 from datetime import date
 from dateutil.relativedelta import relativedelta
 from os.path import isfile
+from secrets import CAMS_KEY
 import time as t
 import urllib3
 urllib3.disable_warnings()
 
 def main():
 
+
     # Credentials for acessing the ADS api
     credentials = {
 
         "url": "https://ads.atmosphere.copernicus.eu/api/v2",
-        "key": "YOUR API KEY"
+        "key": CAMS_KEY
 
     }
 
     # Starting one API session
     c = cdsapi.Client(url=credentials['url'], key=credentials['key'])
 
-
     # For each year, downloads data for every month
     for year in [ 2018, 2019, 2020, 2021, 2022 ]:
         for month in range(1, 13):
+
             month_str = f"{month:02d}"  # convert to two-digit string format
 
             # Creates a file name
             outpath = f'../data/CAMS-europe-reanalysis/raw/reanalysis/{year}-{month_str}.zip'
 
             # If there is already a file with this name (that is, the file was alraedy downloaded, skip this.)
-            if isfile(outpath):
+            if isfile(outpath) and f"{year}-{month}" != datetime.today().strftime("%Y-%m"):
                 continue
 
             # Save to a unique file per month

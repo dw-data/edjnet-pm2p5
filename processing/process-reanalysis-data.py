@@ -458,10 +458,10 @@ def compute(
             result[column] = result[column].round()
             
         if 'percentage_' in column:
-            result[column] = result[column].round(2)
+            result[column] = result[column]
             
         if 'mean' in column:
-            result[column] = result[column].round(2)
+            result[column] = result[column]
     
           
     result = result.drop(columns=[col for col in result.columns if '_y' in col or '_x' in col or 'band' in col])
@@ -490,7 +490,7 @@ def compute(
 def main():
 
     # Europe reanalysis
-    for timegroup in ['Y', 'D']:
+    for timegroup in ['Y', 'D', 'W']:
         for nuts_level in [0, 3]:
             print(f"Computing {timegroup} at NUTS level {nuts_level}")
             data = compute(
