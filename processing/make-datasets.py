@@ -178,15 +178,16 @@ def nuts3_dw_patterns(inpath, outpath):
 def main():
 
     # nuts0_yearly_patterns("../output/csvs/reanalysis-NUTS0-Y.csv", "../output/excel/CAMS-Europe-Renalaysis-Countries-Yearly-2018-2022.xlsx")
+    nuts3_yearly_patterns("../output/csvs/reanalysis-NUTS1-Y.csv", "../output/excel/CAMS-Europe-Renalysis-NUTS1-Yearly-2018-2022.xlsx")
     # nuts0_yearly_patterns("../output/csvs/forecast-classified-NUTS0-Y-2022.csv", "../output/excel/CAMS-Europe-Forecast-Countries-Yearly-2022.xlsx")
     # nuts3_yearly_patterns("../output/csvs/reanalysis-NUTS3-Y.csv", "../output/excel/NUTS3-population-estimates-2018-2022-CAMS-reanalysis.xlsx")
 
     # nuts3_dw_patterns("../output/csvs/forecast-classified-NUTS3-1D-2023.csv", "../output/excel/CAMS-Europe-Forecast-Daily-2023.xlsx")
     # nuts3_dw_patterns("../output/csvs/forecast-classified-NUTS3-1D-2022.csv", "../output/excel/CAMS-Europe-Forecast-Daily-2022.xlsx")
     
-    nuts3_dw_patterns("../output/csvs/reanalysis-NUTS3-Y.csv", "../output/excel/CAMS-Europe-Renalysis-Yearly-2018-2022.xlsx")
+    # nuts3_dw_patterns("../output/csvs/reanalysis-NUTS3-Y.csv", "../output/excel/CAMS-Europe-Renalysis-Yearly-2018-2022.xlsx")
     # nuts3_dw_patterns("../output/csvs/reanalysis-NUTS3-W.csv", "../output/excel/CAMS-Europe-Renalysis-Weekly-2018-2022.xlsx")
-    nuts3_dw_patterns("../output/csvs/forecast-classified-NUTS3-W-2023.csv", "../output/excel/CAMS-Europe-Forecast-Weekly-2023.xlsx")
+    # nuts3_dw_patterns("../output/csvs/forecast-classified-NUTS3-W-2023.csv", "../output/excel/CAMS-Europe-Forecast-Weekly-2023.xlsx")
 
 
 if __name__ == "__main__":

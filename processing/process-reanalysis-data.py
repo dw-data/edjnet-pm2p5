@@ -491,7 +491,7 @@ def main():
 
     # Europe reanalysis
     for timegroup in ['Y', 'D', 'W']:
-        for nuts_level in [0, 3]:
+        for nuts_level in  [0, 1, 3]:
             print(f"Computing {timegroup} at NUTS level {nuts_level}")
             data = compute(
                 time_slice=(f"2018-01-01", f"2022-12-31"),

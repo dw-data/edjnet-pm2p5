@@ -58,7 +58,7 @@ def main():
         
    
     ### We will also remove the other levels from the general nuts file
-    nuts = nuts[nuts.LEVL_CODE.isin([0, 3])].reset_index(drop=True)
+    nuts = nuts[nuts.LEVL_CODE.isin([0, 1, 3])].reset_index(drop=True)
     
     ### And finally concatenate all
     nuts = pd.concat([nuts] + level_0 + level_3, ignore_index=True)

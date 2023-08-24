@@ -19,31 +19,40 @@ In both cases, the original data showed hourly measurements at the surface level
 
 In order to estimate the population exposed to different thresholds of pollution, another satellite-based dataset was used: the [Global Human Settlement Layer (GHSL)](https://ghsl.jrc.ec.europa.eu/), which estimates how many people live in each one of the satellite's pixels. 
 
-Since the GHSL's pixel size (that is, the area covered by each data point) are significantly smaller than those in the pollution datasets, they had to be reprojected – that is, reshaped in order to match the latitudes, longitudes and pixel size of the Copernicus data. In practical terms, all the GHSL pixels that intercept a single Copernicus pixel had their population summed. As a result, each Copernicus pixel ended up with an estimate of the population that lived there.
+Since the GHSL's pixel size (that is, the area covered by each data point) is significantly smaller than the pixel size in the pollution datasets, it had to be reprojected – that is, reshaped in order to match the latitudes, longitudes and scale of the Copernicus data. 
 
-It's important to highlight that GHSL estimates often don't match official census statistics. However, they come very close.
+In practical terms, all the GHSL pixels that intercept a single Copernicus pixel had their population summed. As a result, each Copernicus pixel ended up associated with an estimate of the population that lived there.
 
-In order to estimate average pollution levels for each region or city, we used the European Union's [NUTS statistical division](https://ec.europa.eu/eurostat/web/nuts/background). Each mentioned area is a level 3 NUTS unit – that is, the smallest available.. We selected all the pixels that were within the given unit and averaged them once again. 
+It's important to highlight that GHSL estimates often don't match official census statistics. However, they come close.
 
-A similar process was done to estimate the share of population exposed to each pollution threshold: we first selected all the pixels in a region that were above the said threshold and summed their population estimates.
+In order to estimate average pollution levels for each region or city, we used the European Union's [NUTS statistical division](https://ec.europa.eu/eurostat/web/nuts/background). We selected all the pixels that were within the given unit and averaged them once again. 
+
+Each mentioned city in the story is represented by a level 3 NUTS unit – that is, the smallest available statistical division. The pollution levels reported come from the averaging process described above.
+
+A similar process was done to estimate the share of population exposed to each pollution threshold. 
+
+We first selected all the pixels with pollution levels above a given threshold and summed their population estimates. 
+
+Like what happens with the satellite pixels, this means that conditions in the ground actually vary within the averaged area, and the reported values are general approximations that cram together different realities for analysis purposes.
 
 For validating this data processing pipeline, the results were compared to data published by the European Environmental Agency in 2020. The overall trend was the same.
+
 
 ## Code structure
 The source code available in this repository describes in detail how the process above was carried out.
 
 The directory `downloaders` contains the scripts used to download data from the Copernicus API. Please notice that the data from the GHSL and NUTS shapefiles were downloaded manually and not using any scripts.
 
-The directory `pre-processing` has all the scripts used to prepare the data for the processing described above, including unzipping the files and adding other regional divisions of interest to the NUTS shapefiles (namely regional divisions for European countries that are still not contemplated in the NUTS statistical division).
+The directory `pre-processing` has all the scripts used to prepare the data for the process described above, including unzipping the files and adding other regional divisions of interest to the NUTS shapefiles (namely regional divisions for countries that are still not contemplated in the NUTS statistical division).
 
-The directory `processing` contains the scripts that averaged and reprojected the satellite data and, ultimately, produced CSV files with estimated pollution and population estimates for each NUTS region in different time frames. Additionally, another script extracted pollution estimates for specific points (city centers), instead of averaging areas. Finally, the CSV files are also processed into easier-to-work-with Excel files.
+The directory `processing` contains the scripts that averaged and reprojected the satellite data and, ultimately, produced CSV files with estimated pollution and population estimates for each NUTS region in different timeframes. Additionally, another script extracted pollution estimates for specific points (city centers), instead of averaging areas, but it wasn't used in this story. Finally, the CSV files are also processed into easier-to-work-with Excel files.
 
-Finally, the `viz` directory contains the scripts used to generate the maps shown in the piece, as well as another set of CSV files which powers the charts that were made with (Datawrapper)[https://www.datawrapper.de/].
+Finally, the `viz` directory contains the scripts used to generate the maps shown in the piece, as well as another set of CSV files which powersed the charts made with (Datawrapper)[https://www.datawrapper.de/].
 
 
 ## Access to processed data
-The files available in the `output` directory are the result of the process described above, with country and NUTS3-level estimates on pollution. 
+The Excel files available in the `output` directory are the result of the process described above, with country and NUTS3-level estimates on pollution. 
 
 The processed pixel-level data was too large to be published on GitHub, but if you are interested in them, please email data.team[at]dw.com. 
 
-Similarly, the source data was also too large to be uploaded, but it can be found in the hyperlink in the methodology session.
+Similarly, the source data was also too large to be uploaded, but it can be found in the hyperlinks in the methodology section.
