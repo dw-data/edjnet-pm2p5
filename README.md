@@ -1,5 +1,3 @@
-GITHUB CONTENT
-
 # Air Pollution in Europe
 
 This repository contains the code and a brief methodological description of data analysis behind [this] piece, which was published by DW and the collaborators from the European Data Journalism Network.
