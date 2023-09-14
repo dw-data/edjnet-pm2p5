@@ -1,6 +1,6 @@
 # Air Pollution in Europe
 
-This repository contains the code and a brief methodological description of data analysis behind [this] piece, which was published by DW and the collaborators from the European Data Journalism Network.
+This repository contains the code and a brief methodological description of data analysis behind [this](https://www.dw.com/en/air-pollution-nearly-everyone-in-europe-breathing-bad-air/a-66657048) piece, which was published by DW and the collaborators from the European Data Journalism Network.
 
 Data analysis and reporting by Rodrigo Menegat Schuinski.
 Story edited by Gianna G. Grün and Zulfikar Abbany.
@@ -44,7 +44,7 @@ The directory `pre-processing` has all the scripts used to prepare the data for 
 
 The directory `processing` contains the scripts that averaged and reprojected the satellite data and, ultimately, produced CSV files with estimated pollution and population estimates for each NUTS region in different timeframes. Additionally, another script extracted pollution estimates for specific points (city centers), instead of averaging areas, but it wasn't used in this story. Finally, the CSV files are also processed into easier-to-work-with Excel files.
 
-Finally, the `viz` directory contains the scripts used to generate the maps shown in the piece, as well as another set of CSV files which powersed the charts made with (Datawrapper)[https://www.datawrapper.de/].
+Finally, the `viz` directory contains the scripts used to generate the maps shown in the piece, as well as another set of CSV files which powersed the charts made with [Datawrapper]([https://www.datawrapper.de/).
 
 ## Access to processed data
 The Excel files available in the `output` directory are the result of the process described above, with country and NUTS3-level estimates on pollution. 
